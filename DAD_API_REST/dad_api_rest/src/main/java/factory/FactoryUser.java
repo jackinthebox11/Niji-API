@@ -1,6 +1,13 @@
 package factory;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+
+
 import javax.persistence.EntityManager;
+
+
 
 import middle.Groupe;
 import middle.User;
@@ -24,7 +31,8 @@ public class FactoryUser {
 	 * commentaire0 prenom1, nom1, login1, password1, commentaire1
 	 */
 	public void generateSomeUsersAndSave() {
-		Groupe g = new Groupe("groupeAutomatique");
+		Collection<Groupe> g = new ArrayList<Groupe>();
+		Groupe groupe = new Groupe("groupeAutomatique");
 		for (int i = 0; i < tabusers.length; i++) {
 			tabusers[i] = new User("prenom" + i, "nom " + i, "login" + i,
 					"password" + i, "commentaire " + i,g);
@@ -37,7 +45,8 @@ public class FactoryUser {
 	 * commentaire basique
 	 */
 	public void generateUsers() {
-		Groupe g = new Groupe("groupeAutomatique2");
+		Collection<Groupe> g = new ArrayList<Groupe>();
+		Groupe groupe = new Groupe("groupeAutomatique2");
 		user1 = new User("Jacques", "Martin", "loginJacques",
 				"passwordJacques", "est un consommateur qui consomme peu",g);
 		user2 = new User("Laurine", "Dupont", "loginLaurine",
@@ -54,7 +63,8 @@ public class FactoryUser {
 	 * commentaire basique
 	 */
 	public void generateUsersWithoutPersist() {
-		Groupe g = new Groupe("GroupeAutomatique3");
+		Collection<Groupe> g = new ArrayList<Groupe>();
+		Groupe groupe = new Groupe("GroupeAutomatique3");
 		user1 = new User("Jacques", "Martin", "loginJacques",
 				"passwordJacques", "est un consommateur qui consomme peu",g);
 		user2 = new User("Laurine", "Dupont", "loginLaurine",
@@ -64,7 +74,8 @@ public class FactoryUser {
 	}
 	
 	public User getOneUserWithoutPersist(){
-		Groupe g = new Groupe("GroupeAutomatique4");
+		Collection<Groupe> g = new ArrayList<Groupe>();
+		Groupe groupe = new Groupe("GroupeAutomatique4");
 		return new User("Jacques", "Martin", "loginJacques",
 				"passwordJacques", "est un consommateur qui consomme peu",g);
 	}

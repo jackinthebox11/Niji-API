@@ -19,7 +19,7 @@ public class User {
 	private String userlogin;
 	private String userpassword;
 	private String userinfoComplementaire;
-	private Groupe groupe;
+	private Collection<Groupe> groupe;
 	private Collection<Categorie> categories;
 	
 	public User() {
@@ -27,7 +27,7 @@ public class User {
 	}
 	
 	public User(String userprenom, String usernom, String userlogin,
-			String userpassword, String userinfoComplementaire, Groupe groupe) {
+			String userpassword, String userinfoComplementaire, Collection<Groupe>  groupe) {
 		super();
 		this.userprenom = userprenom;
 		this.usernom = usernom;
@@ -41,7 +41,7 @@ public class User {
 	
 
 	public User(String userprenom, String usernom, String userlogin,
-			String userpassword, String userinfoComplementaire, Groupe groupe,
+			String userpassword, String userinfoComplementaire, Collection<Groupe> groupe,
 			Collection<Categorie> categories) {
 		super();
 		this.userprenom = userprenom;
@@ -103,12 +103,12 @@ public class User {
 		this.userpassword = userpassword;
 	}
 
-	@ManyToOne(cascade=CascadeType.PERSIST)
-	public Groupe getGroupe() {
+	@ManyToMany(cascade=CascadeType.PERSIST)
+	public Collection<Groupe> getGroupe() {
 		return groupe;
 	}
 
-	public void setGroupe(Groupe groupe) {
+	public void setGroupe(Collection<Groupe> groupe) {
 		this.groupe = groupe;
 	}
 
