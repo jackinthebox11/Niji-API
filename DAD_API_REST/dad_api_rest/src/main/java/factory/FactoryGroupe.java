@@ -1,5 +1,9 @@
 package factory;
 
+
+/**
+ * Permet de générer des groupes 
+ */
 import javax.persistence.EntityManager;
 
 import middle.Groupe;
