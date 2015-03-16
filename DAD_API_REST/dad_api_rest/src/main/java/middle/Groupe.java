@@ -15,9 +15,7 @@ import javax.persistence.OneToMany;
 
 
 /**
- * <!-- begin-user-doc -->
- * <!--  end-user-doc  -->
- * @generated
+ * Représente un groupe 
  */
  
 @javax.persistence.Entity 

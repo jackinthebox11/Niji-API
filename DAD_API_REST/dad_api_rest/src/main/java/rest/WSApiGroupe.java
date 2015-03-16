@@ -10,6 +10,10 @@ import middle.User;
 import factory.FactoryGroupe;
 import factory.FactoryUser;
 
+
+/**
+ * Définition des urls permettant d'appeler les fonctions relatives aux groupes
+ */
 @Path("/groupe")
 public class WSApiGroupe {
 	@GET

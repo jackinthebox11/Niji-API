@@ -9,6 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+/**
+ * Symbolise une catégorie 
+ * @author samy
+ */
 @Entity
 public class Categorie {
 	private long idCategorie;

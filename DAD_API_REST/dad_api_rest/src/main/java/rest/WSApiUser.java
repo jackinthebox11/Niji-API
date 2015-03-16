@@ -13,6 +13,10 @@ import factory.FactoryUser;
 import middle.User;
 import backend.UtilisateurDAO;
 
+
+/**
+ * Définition des urls permettant d'appeler les fonctions relatives aux utilisateurs
+ */
 @Path("/user")
 public class WSApiUser {
 	

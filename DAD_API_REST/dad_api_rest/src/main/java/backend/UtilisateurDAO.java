@@ -17,7 +17,13 @@ public class UtilisateurDAO {
 	private static String queryById = "SELECT u from User u "
 			+ " WHERE userid = :userid ";
 
-
+	
+	/**
+	 * Récupère un utilisateur dans la base grace à son id
+	 * @param manager
+	 * @param userid
+	 * @return
+	 */
 	public static User getUserById(EntityManager manager, long userid) {
 		try {
 			User user = manager.createQuery(queryById, User.class)

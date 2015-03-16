@@ -10,6 +10,9 @@ import middle.Groupe;
 import factory.FactoryGroupe;
 
 
+/**
+ * Permet de générer des données via une url
+ */
 @Path("/GenerateData")
 public class WSApiGenerateData {
 	
@@ -18,6 +21,6 @@ public class WSApiGenerateData {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String launchMain(){
 		Client.main(null);
-		return "C'est fait (message pour afficher quelque chose)";
+		return "Done)";
 	}
 }

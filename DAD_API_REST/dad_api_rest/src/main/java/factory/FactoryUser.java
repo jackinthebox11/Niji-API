@@ -12,6 +12,10 @@ import javax.persistence.EntityManager;
 import middle.Groupe;
 import middle.User;
 
+/**
+ * Permet de générer des utilisateurs dans la base
+ * @author samy
+ */
 public class FactoryUser {
 	private EntityManager manager;
 
