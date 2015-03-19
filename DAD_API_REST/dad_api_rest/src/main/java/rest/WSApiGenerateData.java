@@ -21,6 +21,6 @@ public class WSApiGenerateData {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String launchMain(){
 		Client.main(null);
-		return "Done)";
+		return "Done";
 	}
 }

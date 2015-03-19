@@ -17,10 +17,8 @@ public class Client {
 		FactoryUser factoryuser = new FactoryUser(manager);
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
-		factoryuser.generateUsers();;
-		
+		factoryuser.generateSomeUsersAndSave();
 		//UtilisateurDAO.addGroupToUser(manager, 10);
-		
 		tx.commit();
 		System.out.println("Done ...");
 	}

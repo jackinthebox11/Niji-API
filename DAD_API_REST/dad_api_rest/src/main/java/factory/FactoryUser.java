@@ -19,7 +19,7 @@ import middle.User;
 public class FactoryUser {
 	private EntityManager manager;
 
-	private User[] tabusers = new User[10];
+	private User[] tabusers = new User[1000];
 	private User user1;
 	private User user2;
 	private User user3;
