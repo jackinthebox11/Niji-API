@@ -17,7 +17,7 @@ import javax.persistence.ManyToMany;
 public class Categorie {
 	private long idCategorie;
 	private String nomCategorie;
-	private Collection<User> utilisateurs;
+	private Collection<User> users;
 	
 	public Categorie(){
 		
@@ -29,10 +29,10 @@ public class Categorie {
 	}
 
 	
-	public Categorie(String nomCategorie, Collection<User> utilisateurs) {
+	public Categorie(String nomCategorie, Collection<User> users) {
 		super();
 		this.nomCategorie = nomCategorie;
-		this.utilisateurs = utilisateurs;
+		this.users = users;
 	}
 
 	@Id
@@ -53,13 +53,13 @@ public class Categorie {
 		this.nomCategorie = nomCategorie;
 	}
 
-	@ManyToMany(cascade=CascadeType.PERSIST)
-	public Collection<User> getUtilisateurs() {
-		return utilisateurs;
+	@ManyToMany(cascade=CascadeType.PERSIST, mappedBy="categories")
+	public Collection<User> getUsers() {
+		return users;
 	}
 
-	public void setUtilisateurs(Collection<User> utilisateurs) {
-		this.utilisateurs = utilisateurs;
+	public void setUsers(Collection<User> users) {
+		this.users = users;
 	}
 	
 }

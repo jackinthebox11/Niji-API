@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -22,7 +24,7 @@ public class User {
 	private String userlogin;
 	private String userpassword;
 	private String userinfoComplementaire;
-	private Collection<Groupe> groupe;
+	private Collection<Groupe> groupes;
 	private Collection<Categorie> categories;
 	
 	public User() {
@@ -30,21 +32,21 @@ public class User {
 	}
 	
 	public User(String userprenom, String usernom, String userlogin,
-			String userpassword, String userinfoComplementaire, Collection<Groupe>  groupe) {
+			String userpassword, String userinfoComplementaire, Collection<Groupe>  groupes) {
 		super();
 		this.userprenom = userprenom;
 		this.usernom = usernom;
 		this.userlogin = userlogin;
 		this.userpassword = userpassword;
 		this.userinfoComplementaire = userinfoComplementaire;
-		this.groupe = groupe;
+		this.groupes = groupes;
 	}
 	
 	
 	
 
 	public User(String userprenom, String usernom, String userlogin,
-			String userpassword, String userinfoComplementaire, Collection<Groupe> groupe,
+			String userpassword, String userinfoComplementaire, Collection<Groupe> groupes,
 			Collection<Categorie> categories) {
 		super();
 		this.userprenom = userprenom;
@@ -52,7 +54,7 @@ public class User {
 		this.userlogin = userlogin;
 		this.userpassword = userpassword;
 		this.userinfoComplementaire = userinfoComplementaire;
-		this.groupe = groupe;
+		this.groupes = groupes;
 		this.categories = categories;
 	}
 
@@ -107,15 +109,25 @@ public class User {
 	}
 
 	@ManyToMany(cascade=CascadeType.PERSIST)
-	public Collection<Groupe> getGroupe() {
-		return groupe;
+	@JoinTable(
+			name = "User_Groupe",
+			joinColumns = @JoinColumn(name="userId"),
+			inverseJoinColumns = @JoinColumn(name="idGroupe")
+			)
+	public Collection<Groupe> getGroupes() {
+		return groupes;
 	}
 
-	public void setGroupe(Collection<Groupe> groupe) {
-		this.groupe = groupe;
+	public void setGroupes(Collection<Groupe> groupe) {
+		this.groupes = groupe;
 	}
 
 	@ManyToMany(cascade=CascadeType.PERSIST)
+	@JoinTable(
+			name = "User_Categorie",
+			joinColumns = @JoinColumn(name="userId"),
+			inverseJoinColumns = @JoinColumn(name="idCategorie")
+			)
 	public Collection<Categorie> getCategories() {
 		return categories;
 	}

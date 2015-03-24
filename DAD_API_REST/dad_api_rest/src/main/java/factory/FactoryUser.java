@@ -5,10 +5,19 @@ import java.util.Collection;
 
 
 
+
+
+
 import javax.persistence.EntityManager;
 
 
 
+
+
+
+import backend.CategorieDAO;
+import backend.GroupeDAO;
+import middle.Categorie;
 import middle.Groupe;
 import middle.User;
 
@@ -35,11 +44,12 @@ public class FactoryUser {
 	 * commentaire0 prenom1, nom1, login1, password1, commentaire1
 	 */
 	public void generateSomeUsersAndSave() {
-		Collection<Groupe> g = new ArrayList<Groupe>();
-		Groupe groupe = new Groupe("groupeAutomatique");
+		
+		Collection<Categorie> c = CategorieDAO.getCategories(manager);
+		Collection<Groupe> g = GroupeDAO.getGroupes(manager);
 		for (int i = 0; i < tabusers.length; i++) {
 			tabusers[i] = new User("prenom" + i, "nom " + i, "login" + i,
-					"password" + i, "commentaire " + i,g);
+					"password" + i, "commentaire " + i, g, c);
 			manager.persist(tabusers[i]);
 		}
 	}

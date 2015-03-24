@@ -1,5 +1,6 @@
 package rest;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -51,7 +52,7 @@ public class WSApiCategorie {
 	@GET
 	@Path("getCategories")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Categorie> getCategories() {
+	public Collection<Categorie> getCategories() {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("example");
 		EntityManager manager = factory.createEntityManager();
 		return CategorieDAO.getCategories(manager);

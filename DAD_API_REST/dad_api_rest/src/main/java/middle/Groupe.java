@@ -9,6 +9,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -23,7 +24,7 @@ public class Groupe
 {
 	private long idGroupe;
 	private String nomGroupe;
-	private Collection<User> utilisateurs;
+	private Collection<User> users;
 	
 	public Groupe(){
 		
@@ -34,10 +35,10 @@ public class Groupe
 		this.nomGroupe = nomGroupe;
 	}
 	
-	public Groupe(String nomGroupe, Collection<User> utilisateurs) {
+	public Groupe(String nomGroupe, Collection<User> users) {
 		super();
 		this.nomGroupe = nomGroupe;
-		this.utilisateurs = utilisateurs;
+		this.users = users;
 	}
 	
 	@Id
@@ -59,13 +60,13 @@ public class Groupe
 	}
 
 
-	@OneToMany(cascade=CascadeType.PERSIST)
-	public Collection<User> getUtilisateurs() {
-		return utilisateurs;
+	@ManyToMany(cascade=CascadeType.PERSIST, mappedBy="groupes")
+	public Collection<User> getUsers() {
+		return users;
 	}
 
-	public void setUtilisateurs(Collection<User> utilisateurs) {
-		this.utilisateurs = utilisateurs;
+	public void setUsers(Collection<User> users) {
+		this.users = users;
 	}
 	
 	

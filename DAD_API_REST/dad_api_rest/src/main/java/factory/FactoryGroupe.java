@@ -6,16 +6,14 @@ package factory;
  */
 import javax.persistence.EntityManager;
 
+import middle.Categorie;
 import middle.Groupe;
 
 public class FactoryGroupe {
 
 	private EntityManager manager;
 
-	private Groupe[] tabusers = new Groupe[10];
-	private Groupe g1;
-	private Groupe g2;
-	private Groupe g3;
+	private Groupe[] tabgrp = new Groupe[10];
 	
 	public FactoryGroupe(){
 	}
@@ -23,8 +21,17 @@ public class FactoryGroupe {
 		this.manager = manager;
 	}
 	
+	/**
+	 * Génère des groupes avec des nomGroupes + numero
+	 */
+	public void generateSomeGroupesAndSave() {
+		for (int i = 0; i < tabgrp.length; i++) {
+			tabgrp[i] = new Groupe("nomGroupe" + i);
+			manager.persist(tabgrp[i]);
+		}
+	}
 	
 	public Groupe getOneGroupeWithoutPersist(){
-		return new Groupe("GroupebyFactory");
+		return new Groupe("nomGroupe2");
 	}
 }

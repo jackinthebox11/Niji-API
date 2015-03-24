@@ -1,5 +1,6 @@
 package backend;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -16,9 +17,9 @@ public class CategorieDAO {
 
 	private static String queryCat = "SELECT c from Categorie c ";
 	
-	public static List<Categorie> getCategories(EntityManager manager) { 
+	public static Collection<Categorie> getCategories(EntityManager manager) { 
 		try { 
-			List<Categorie> listeC = manager
+			Collection<Categorie> listeC = manager
 				.createQuery(queryCat,Categorie.class)
 				.getResultList(); 
 			return listeC;
