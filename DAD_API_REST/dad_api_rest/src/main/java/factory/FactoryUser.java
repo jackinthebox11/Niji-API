@@ -8,7 +8,9 @@ import java.util.Collection;
 
 
 
+
 import javax.persistence.EntityManager;
+
 
 
 
@@ -17,6 +19,7 @@ import javax.persistence.EntityManager;
 
 import backend.CategorieDAO;
 import backend.GroupeDAO;
+import backend.UtilisateurDAO;
 import middle.Categorie;
 import middle.Groupe;
 import middle.User;
@@ -45,8 +48,10 @@ public class FactoryUser {
 	 */
 	public void generateSomeUsersAndSave() {
 		
-		Collection<Categorie> c = CategorieDAO.getCategories(manager);
-		Collection<Groupe> g = GroupeDAO.getGroupes(manager);
+		Collection<Categorie> c;
+		Collection<Groupe> g;
+		g = UtilisateurDAO.addGroup(manager);
+		c = UtilisateurDAO.addCategorie(manager);
 		for (int i = 0; i < tabusers.length; i++) {
 			tabusers[i] = new User("prenom" + i, "nom " + i, "login" + i,
 					"password" + i, "commentaire " + i, g, c);

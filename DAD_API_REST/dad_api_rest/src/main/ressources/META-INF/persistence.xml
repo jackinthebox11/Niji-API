@@ -19,7 +19,7 @@
 				datanucleus.ConnectionUserName=uid=admin,ou=system /> <property datanucleus.ConnectionPassword=secret 
 				/> -->
 			<!-- <property name="javax.persistence.jdbc.password" value=""/> -->
-			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:8889/dad_databaseAPI" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://192.168.10.11/dad_databaseAPItest" />
 
 
 

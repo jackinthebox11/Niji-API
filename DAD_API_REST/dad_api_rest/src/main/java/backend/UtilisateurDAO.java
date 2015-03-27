@@ -1,10 +1,12 @@
 package backend;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
+import middle.Categorie;
 import middle.Groupe;
 import middle.User;
 
@@ -16,6 +18,12 @@ public class UtilisateurDAO {
 	
 	private static String queryById = "SELECT u from User u "
 			+ " WHERE userid = :userid ";
+	
+	private static String queryCat = "SELECT c FROM Categorie c"
+			+ "WHERE idCategorie = 4";
+	
+	private static String queryGrp = "SELECT g FROM Groupe g "
+			+ "WHERE idGroupe = 2";
 
 	
 	/**
@@ -77,9 +85,33 @@ public class UtilisateurDAO {
 	 * @param userid
 	 * @param group
 	 */
-	/*public static void addGroupToUser(EntityManager manager, long userid, Groupe group){
+	public static void addGroupToUser(EntityManager manager, long userid){
+		Collection<Groupe> groupes;
+		groupes = manager.createQuery(queryGrp,Groupe.class).getResultList(); 
 		User user = UtilisateurDAO.getUserById(manager, userid);
-		user.setGroupe(group);
+		user.setGroupes(groupes);
 		manager.persist(user);
-	}*/
+	}
+	
+	public static void addCategorieToUser(EntityManager manager, long userid, Collection<Categorie> categories){
+		categories = manager.createQuery(queryCat,Categorie.class).getResultList();
+		User user = UtilisateurDAO.getUserById(manager, userid);
+		user.setCategories(categories);
+		manager.persist(user);
+	}
+	
+	public static Collection<Groupe> addGroup(EntityManager manager){
+		Collection<Groupe> groupes;
+		groupes = manager.createQuery(queryGrp,Groupe.class).getResultList(); 
+		return groupes;
+		
+	}
+	
+	public static Collection<Categorie> addCategorie(EntityManager manager){
+		Collection<Categorie> categories;
+		categories = manager.createQuery(queryCat,Categorie.class).getResultList(); 
+		return categories;
+		
+	}
+	
 }
