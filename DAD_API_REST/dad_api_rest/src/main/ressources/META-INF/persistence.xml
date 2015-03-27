@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 	
-	<persistence-unit name="persiste" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="example" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<properties>
 
@@ -19,7 +19,7 @@
 				datanucleus.ConnectionUserName=uid=admin,ou=system /> <property datanucleus.ConnectionPassword=secret 
 				/> -->
 			<!-- <property name="javax.persistence.jdbc.password" value=""/> -->
-			<property name="hibernate.connection.url" value="jdbc:mysql://192.168.10.11/dad_databaseAPI" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost/dad_databaseAPI" />
 
 
 
