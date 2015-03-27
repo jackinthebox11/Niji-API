@@ -1,7 +1,6 @@
 package middle;
 
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Set;
 import java.util.HashSet;
@@ -21,7 +20,7 @@ import javax.persistence.OneToMany;
  */
  
 @javax.persistence.Entity 
-public class Groupe  implements Serializable
+public class Groupe
 {
 	private long idGroupe;
 	private String nomGroupe;
@@ -61,7 +60,7 @@ public class Groupe  implements Serializable
 	}
 
 
-	@ManyToMany( mappedBy="groupes")
+	@ManyToMany(cascade=CascadeType.PERSIST, mappedBy="groupes")
 	public Collection<User> getUsers() {
 		return users;
 	}
@@ -69,6 +68,7 @@ public class Groupe  implements Serializable
 	public void setUsers(Collection<User> users) {
 		this.users = users;
 	}
+	
 	
 }
 
