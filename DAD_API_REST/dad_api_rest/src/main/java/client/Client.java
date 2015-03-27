@@ -12,7 +12,9 @@ import factory.FactoryUser;
 
 public class Client {
 	public static void main(String[] args) {
+		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("example");
+
 		EntityManager manager = factory.createEntityManager();
 		System.out.println("Launch of the Client...");
 		FactoryUser factoryuser = new FactoryUser(manager);
