@@ -19,7 +19,7 @@ public class UtilisateurDAO {
 	private static String queryById = "SELECT u from User u "
 			+ " WHERE userid = :userid ";
 	
-	private static String queryCat = "SELECT c FROM Categorie c"
+	private static String queryCat = "SELECT c FROM Categorie c "
 			+ "WHERE idCategorie = 4";
 	
 	private static String queryGrp = "SELECT g FROM Groupe g "

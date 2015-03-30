@@ -12,6 +12,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonManagedReference;
+
 /**
  * Représente un utilisateur
  */
@@ -114,6 +117,7 @@ public class User {
 			joinColumns = @JoinColumn(name="userId"),
 			inverseJoinColumns = @JoinColumn(name="idGroupe")
 			)
+	@JsonManagedReference
 	public Collection<Groupe> getGroupes() {
 		return groupes;
 	}
@@ -128,6 +132,7 @@ public class User {
 			joinColumns = @JoinColumn(name="userId"),
 			inverseJoinColumns = @JoinColumn(name="idCategorie")
 			)
+	@JsonManagedReference
 	public Collection<Categorie> getCategories() {
 		return categories;
 	}

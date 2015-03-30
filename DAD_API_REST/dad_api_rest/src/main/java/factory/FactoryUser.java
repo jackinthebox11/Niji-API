@@ -50,8 +50,8 @@ public class FactoryUser {
 		
 		Collection<Categorie> c;
 		Collection<Groupe> g;
-		g = UtilisateurDAO.addGroup(manager);
-		c = UtilisateurDAO.addCategorie(manager);
+		g = GroupeDAO.getGroupes(manager);
+		c = CategorieDAO.getCategories(manager);
 		for (int i = 0; i < tabusers.length; i++) {
 			tabusers[i] = new User("prenom" + i, "nom " + i, "login" + i,
 					"password" + i, "commentaire " + i, g, c);

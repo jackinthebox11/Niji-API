@@ -13,6 +13,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonManagedReference;
+
 
 
 /**
@@ -61,6 +65,7 @@ public class Groupe
 
 
 	@ManyToMany(cascade=CascadeType.PERSIST, mappedBy="groupes")
+	@JsonBackReference
 	public Collection<User> getUsers() {
 		return users;
 	}

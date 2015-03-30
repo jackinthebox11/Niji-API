@@ -9,6 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonManagedReference;
+
 /**
  * Symbolise une catégorie 
  * @author samy
@@ -54,6 +58,7 @@ public class Categorie {
 	}
 
 	@ManyToMany(cascade=CascadeType.PERSIST, mappedBy="categories")
+	@JsonBackReference
 	public Collection<User> getUsers() {
 		return users;
 	}
