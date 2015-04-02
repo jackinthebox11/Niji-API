@@ -9,7 +9,10 @@ import java.util.Collection;
 
 
 
+import java.util.Random;
+
 import javax.persistence.EntityManager;
+
 
 
 
@@ -49,12 +52,13 @@ public class FactoryUser {
 	public void generateSomeUsersAndSave() {
 		
 		Collection<Categorie> c;
-		Collection<Groupe> g;
-		g = GroupeDAO.getGroupes(manager);
+		Groupe g;
 		c = CategorieDAO.getCategories(manager);
 		for (int i = 0; i < tabusers.length; i++) {
+			Random r = new Random();
+			long valeur = 1 + r.nextInt(11 - 1);
 			tabusers[i] = new User("prenom" + i, "nom " + i, "login" + i,
-					"password" + i, "commentaire " + i, g, c);
+					"password" + i, "commentaire " + i, GroupeDAO.getGroupeById(manager, valeur), c);
 			manager.persist(tabusers[i]);
 		}
 	}
@@ -64,8 +68,7 @@ public class FactoryUser {
 	 * commentaire basique
 	 */
 	public void generateUsers() {
-		Collection<Groupe> g = new ArrayList<Groupe>();
-		Groupe groupe = new Groupe("groupeAutomatique2");
+		Groupe g = new Groupe("groupeAutomatique2");
 		user1 = new User("Jacques", "Martin", "loginJacques",
 				"passwordJacques", "est un consommateur qui consomme peu",g);
 		user2 = new User("Laurine", "Dupont", "loginLaurine",
@@ -82,8 +85,7 @@ public class FactoryUser {
 	 * commentaire basique
 	 */
 	public void generateUsersWithoutPersist() {
-		Collection<Groupe> g = new ArrayList<Groupe>();
-		Groupe groupe = new Groupe("GroupeAutomatique3");
+		Groupe g = new Groupe("GroupeAutomatique3");
 		user1 = new User("Jacques", "Martin", "loginJacques",
 				"passwordJacques", "est un consommateur qui consomme peu",g);
 		user2 = new User("Laurine", "Dupont", "loginLaurine",
@@ -93,8 +95,7 @@ public class FactoryUser {
 	}
 	
 	public User getOneUserWithoutPersist(){
-		Collection<Groupe> g = new ArrayList<Groupe>();
-		Groupe groupe = new Groupe("GroupeAutomatique4");
+		Groupe g = new Groupe("GroupeAutomatique4");
 		return new User("Jacques", "Martin", "loginJacques",
 				"passwordJacques", "est un consommateur qui consomme peu",g);
 	}

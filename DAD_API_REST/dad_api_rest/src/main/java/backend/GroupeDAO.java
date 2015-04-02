@@ -28,18 +28,17 @@ private static String queryGrp = "SELECT g from Groupe g ";
 			return null;
 		}
 	}
-
+	
 	private static String queryById = "SELECT g from Groupe g "
 			+ "WHERE idGroupe = :idGroupe";
 	
 	public static Groupe getGroupeById(EntityManager manager, long idGroupe) {
 		try {
 			Groupe groupe = manager.createQuery(queryById, Groupe.class)
-					.setParameter("idCategorie", idGroupe).getSingleResult();
+					.setParameter("idGroupe", idGroupe).getSingleResult();
 			return groupe;
 		} catch (NoResultException e) {
 			return null;
 		}
 	}
-
 }

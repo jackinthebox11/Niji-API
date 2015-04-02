@@ -86,10 +86,10 @@ public class UtilisateurDAO {
 	 * @param group
 	 */
 	public static void addGroupToUser(EntityManager manager, long userid){
-		Collection<Groupe> groupes;
-		groupes = manager.createQuery(queryGrp,Groupe.class).getResultList(); 
+		Groupe groupe;
+		groupe = manager.createQuery(queryGrp,Groupe.class).getSingleResult(); 
 		User user = UtilisateurDAO.getUserById(manager, userid);
-		user.setGroupes(groupes);
+		user.setGroupe(groupe);
 		manager.persist(user);
 	}
 	
@@ -100,10 +100,11 @@ public class UtilisateurDAO {
 		manager.persist(user);
 	}
 	
-	public static Collection<Groupe> addGroup(EntityManager manager){
-		Collection<Groupe> groupes;
-		groupes = manager.createQuery(queryGrp,Groupe.class).getResultList(); 
-		return groupes;
+	public static Groupe addGroup(EntityManager manager){
+		Groupe groupe;
+		groupe = manager.createQuery(queryGrp,Groupe.class).getSingleResult();
+		//User user = UtilisateurDAO.getUserById(manager, userid);
+		return groupe;
 		
 	}
 	

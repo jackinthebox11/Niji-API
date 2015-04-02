@@ -64,8 +64,8 @@ public class Groupe
 	}
 
 
-	@ManyToMany(cascade=CascadeType.PERSIST, mappedBy="groupes")
-	@JsonBackReference
+	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="groupe")
+	//@JsonBackReference
 	public Collection<User> getUsers() {
 		return users;
 	}

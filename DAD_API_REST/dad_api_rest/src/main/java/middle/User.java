@@ -27,7 +27,7 @@ public class User {
 	private String userlogin;
 	private String userpassword;
 	private String userinfoComplementaire;
-	private Collection<Groupe> groupes;
+	private Groupe groupe;
 	private Collection<Categorie> categories;
 	
 	public User() {
@@ -35,21 +35,21 @@ public class User {
 	}
 	
 	public User(String userprenom, String usernom, String userlogin,
-			String userpassword, String userinfoComplementaire, Collection<Groupe>  groupes) {
+			String userpassword, String userinfoComplementaire, Groupe groupe) {
 		super();
 		this.userprenom = userprenom;
 		this.usernom = usernom;
 		this.userlogin = userlogin;
 		this.userpassword = userpassword;
 		this.userinfoComplementaire = userinfoComplementaire;
-		this.groupes = groupes;
+		this.groupe = groupe;
 	}
 	
 	
 	
 
 	public User(String userprenom, String usernom, String userlogin,
-			String userpassword, String userinfoComplementaire, Collection<Groupe> groupes,
+			String userpassword, String userinfoComplementaire, Groupe groupe,
 			Collection<Categorie> categories) {
 		super();
 		this.userprenom = userprenom;
@@ -57,7 +57,7 @@ public class User {
 		this.userlogin = userlogin;
 		this.userpassword = userpassword;
 		this.userinfoComplementaire = userinfoComplementaire;
-		this.groupes = groupes;
+		this.groupe = groupe;
 		this.categories = categories;
 	}
 
@@ -111,19 +111,15 @@ public class User {
 		this.userpassword = userpassword;
 	}
 
-	@ManyToMany(cascade=CascadeType.PERSIST)
-	@JoinTable(
-			name = "User_Groupe",
-			joinColumns = @JoinColumn(name="userId"),
-			inverseJoinColumns = @JoinColumn(name="idGroupe")
-			)
-	@JsonManagedReference
-	public Collection<Groupe> getGroupes() {
-		return groupes;
+	@ManyToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name = "idGroupe")
+	//@JsonManagedReference
+	public Groupe getGroupe() {
+		return groupe;
 	}
 
-	public void setGroupes(Collection<Groupe> groupe) {
-		this.groupes = groupe;
+	public Groupe setGroupe(Groupe groupe) {
+		return this.groupe = groupe;
 	}
 
 	@ManyToMany(cascade=CascadeType.PERSIST)
