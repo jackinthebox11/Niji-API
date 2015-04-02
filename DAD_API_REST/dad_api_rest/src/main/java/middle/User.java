@@ -113,7 +113,7 @@ public class User {
 
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name = "idGroupe")
-	//@JsonManagedReference
+	@JsonManagedReference
 	public Groupe getGroupe() {
 		return groupe;
 	}

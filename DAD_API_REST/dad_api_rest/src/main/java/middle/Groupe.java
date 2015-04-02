@@ -65,7 +65,7 @@ public class Groupe
 
 
 	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="groupe")
-	//@JsonBackReference
+	@JsonBackReference
 	public Collection<User> getUsers() {
 		return users;
 	}
