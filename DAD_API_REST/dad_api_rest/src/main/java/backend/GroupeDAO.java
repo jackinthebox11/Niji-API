@@ -16,7 +16,8 @@ import middle.Groupe;
  */
 public class GroupeDAO {
 
-private static String queryGrp = "SELECT g from Groupe g ";
+private static String queryGrp = "SELECT g, COUNT() from Groupe g "
+							+ "WHERE idGroup";
 	
 	public static Collection<Groupe> getGroupes(EntityManager manager) { 
 		try { 
